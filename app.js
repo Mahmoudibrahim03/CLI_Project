@@ -22,7 +22,7 @@ figlet('Lazzy Coding XD ', function (err, data) {
             type: "String",
             message: "Project name .. ?",
             name: "proName",
-            default: "webDesign",
+            default: "projectName",
         }
     ]).then(answers => {
         if (answers.type === "webDesign") {

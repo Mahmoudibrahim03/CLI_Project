@@ -48,8 +48,8 @@ figlet('Lazzy Coding XD ', function (err, data) {
                     name: "modules",
                 }]).then(answers => {
                     // cmd.run(`cd ${answers.proName}`)
-                    cmd.run("npm init");
-                    console.log(answers)
+                    // console.log("fixx")
+                    cmd.run("npm init")
                 })
             });
         }

@@ -2,6 +2,7 @@ const figlet = require("figlet");
 const commander = require("commander");
 const inquirer = require("inquirer");
 const fs = require("fs");
+const cmd = require("node-cmd");
 const welcomeMessage = "This nice page is generated using LazzyCode 😴😴"
 //Style welcoming message ✌😁
 
@@ -16,7 +17,7 @@ figlet('Lazzy Coding XD ', function (err, data) {
             type: "String",
             message: "Project type .. ?",
             name: "type",
-            default: "webDesign",
+            default: "webdesign",
         },
         {
             type: "String",
@@ -25,9 +26,9 @@ figlet('Lazzy Coding XD ', function (err, data) {
             default: "projectName",
         }
     ]).then(answers => {
-        if (answers.type === "webDesign") {
+        if (answers.type === "webdesign") {
             // folder should be exist [css ,img ,fonts ,js]
-            fs.mkdir(answers.proName,()=>{
+            fs.mkdir(answers.proName, () => {
                 fs.appendFile(`${answers.proName}/index.html`, `<!---${welcomeMessage}-->`)
                 fs.mkdir(`${answers.proName}/css`, () => {
                     fs.appendFile(`${answers.proName}/css/style.css`, `/*${welcomeMessage}*/`);
@@ -38,6 +39,19 @@ figlet('Lazzy Coding XD ', function (err, data) {
                 fs.mkdir(`${answers.proName}/img`);
                 fs.mkdir(`${answers.proName}/fonts`);
             })
+        } else if (answers.type === "nodejs") {
+            fs.mkdir(answers.proName, () => {
+                fs.appendFile(`${answers.proName}/app.js`, `//${welcomeMessage}`);
+                inquirer.prompt([{
+                    type: "input",
+                    message: "NPM modules you are gonna need ",
+                    name: "modules",
+                }]).then(answers => {
+                    cmd.run(`cd ${answers.proName}`)
+                    cmd.run("npm init");
+                    console.log(answers)
+                })
+            });
         }
     });
 });

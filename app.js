@@ -47,7 +47,7 @@ figlet('Lazzy Coding XD ', function (err, data) {
                     message: "NPM modules you are gonna need ",
                     name: "modules",
                 }]).then(answers => {
-                    cmd.run(`cd ${answers.proName}`)
+                    // cmd.run(`cd ${answers.proName}`)
                     cmd.run("npm init");
                     console.log(answers)
                 })

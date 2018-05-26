@@ -29,19 +29,19 @@ figlet('Lazzy Coding XD ', function (err, data) {
         if (answers.type === "webdesign") {
             // folder should be exist [css ,img ,fonts ,js]
             fs.mkdir(answers.proName, () => {
-                fs.appendFile(`${answers.proName}/index.html`, `<!---${welcomeMessage}-->`)
+                fs.appendFileSync(`${answers.proName}/index.html`, `<!---${welcomeMessage}-->`)
                 fs.mkdir(`${answers.proName}/css`, () => {
-                    fs.appendFile(`${answers.proName}/css/style.css`, `/*${welcomeMessage}*/`);
+                    fs.appendFileSync(`${answers.proName}/css/style.css`, `/*${welcomeMessage}*/`);
                 })
-                fs.mkdir(`${answers.proName}/js`, () => {
+                fs.mkdirsync(`${answers.proName}/js`, () => {
                     fs.appendFile(`${answers.proName}/js/custom.js`, `//${welcomeMessage}`)
                 })
-                fs.mkdir(`${answers.proName}/img`);
-                fs.mkdir(`${answers.proName}/fonts`);
+                fs.mkdirSync(`${answers.proName}/img`);
+                fs.mkdirSync(`${answers.proName}/fonts`);
             })
         } else if (answers.type === "nodejs") {
             fs.mkdir(answers.proName, () => {
-                fs.appendFile(`${answers.proName}/app.js`, `//${welcomeMessage}`);
+                fs.appendFileSync(`${answers.proName}/app.js`, `//${welcomeMessage}`);
                 inquirer.prompt([{
                     type: "input",
                     message: "NPM modules you are gonna need ",

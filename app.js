@@ -3,6 +3,7 @@ const commander = require("commander");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const cmd = require("node-cmd");
+const path = require("path");
 const welcomeMessage = "This nice page is generated using LazzyCode 😴😴"
 //Style welcoming message ✌😁
 
@@ -46,10 +47,17 @@ figlet('Lazzy Coding XD ', function (err, data) {
                     type: "input",
                     message: "NPM modules you are gonna need ",
                     name: "modules",
-                }]).then(answers => {
-                    // cmd.run(`cd ${answers.proName}`)
-                    // console.log("fixx")
-                    cmd.run("npm init")
+                }]).then(modules => {
+                    cmd.run(`cd ${answers.proName}`) // not excuted :( 
+                    console.log(__dirname);
+                    // It should excute this "npm init -y" in this path
+                    cmd.get(`npm init  -y`, (err, data, stderr) => {
+                        if (err) return err
+                        if (stderr) return stderr
+                        else console.log(data)
+                    });
+                    // console.log(__dirname)
+                    // cmd.run(`cd ${answers.proName}`);
                 })
             });
         }

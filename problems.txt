@@ -1,0 +1,4 @@
+* npm install not work well using this modules 
+It cannot handel all this input and output 
+usin node-cmd module
+==================*********======================

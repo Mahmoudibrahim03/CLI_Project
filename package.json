@@ -1,7 +1,7 @@
 {
   "name": "cli_project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Welcome lazzy coder 😴😴😴\r We are provide to you more sleepy time to be more focus in the main project goal\r and stay lazzy 🐹🐹🐹",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +21,7 @@
     "figlet": "^1.2.0",
     "inquirer": "^5.2.0",
     "node-cmd": "^3.0.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }

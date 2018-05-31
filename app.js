@@ -44,29 +44,31 @@ figlet('Lazzy Coding XD ', function (err, data) {
                     <meta http-equiv="X-UA-Compatible" content="ie=edge">
                    
                     <title>${answers.proName}</title>
+                    <link rel="stylesheet" type="text/css" href="css/style.css">
                 </head>
                     <body>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <script src="js/custom.js"></script>
                     </body>
             </html>`;
-            let cssPosition = basicHtml.search("</head>"); //position css
+            let cssPosition = basicHtml.search("<link"); //position css
             let part1 = basicHtml.slice(0, cssPosition);
             let part2 = basicHtml.slice(cssPosition, basicHtml.length);
             basicHtml = part1 + component[0] + part2
-            let jsPosition = basicHtml.search("</body>"); // position js
+            let jsPosition = basicHtml.search("<script"); // position js
             let part3 = basicHtml.slice(0, jsPosition);
             let part4 = basicHtml.slice(jsPosition, basicHtml.lenght);
             basicHtml = part3 + component[1] + part4
             return basicHtml
         }
-        let defultComponent = [` <link rel="stylesheet" type="text/css" href="css/style.css">\n`,
+        let defultComponent = [`<link rel="stylesheet" type="text/css" href="css/style.css">\n`,
             `<script src="js/custom.js"></script>\n`
         ]
-        let bootstrapComponent = [` <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">\n`,
+        let bootstrapComponent = [`<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">\n`,
             `<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>\n`
         ]
         if (answers.type === "webdesign") {
-            // folder should be exist [css ,img ,fonts ,js]            
+            // folder should be exist [css ,img ,font s ,js]            
             fs.mkdir(answers.proName, () => {
                 if(answers.libExist){
                     fs.appendFileSync(`${answers.proName}/index.html`, htmlContent(bootstrapComponent));

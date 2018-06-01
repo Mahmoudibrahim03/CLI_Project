@@ -1,10 +1,7 @@
-const figlet = require("figlet");
-const commander = require("commander");
 const inquirer = require("inquirer");
-const fs = require("fs");
+const figlet = require("figlet");
 const cmd = require("node-cmd");
-const path = require("path");
-var shell = require('shelljs');
+const fs = require("fs");
 const welcomeMessage = "This nice page is generated using LazzyCode 😴😴"
 //Style welcoming message ✌😁
 
@@ -54,16 +51,13 @@ figlet('Lazzy Coding XD ', function (err, data) {
             let cssPosition = basicHtml.search("<link"); //position css
             let part1 = basicHtml.slice(0, cssPosition);
             let part2 = basicHtml.slice(cssPosition, basicHtml.length);
-            basicHtml = part1 + component[0] + part2
+            basicHtml = part1 + component[ 0] + part2
             let jsPosition = basicHtml.search("<script"); // position js
             let part3 = basicHtml.slice(0, jsPosition);
             let part4 = basicHtml.slice(jsPosition, basicHtml.lenght);
             basicHtml = part3 + component[1] + part4
             return basicHtml
         }
-        let defultComponent = [`<link rel="stylesheet" type="text/css" href="css/style.css">\n`,
-            `<script src="js/custom.js"></script>\n`
-        ]
         let bootstrapComponent = [`<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">\n`,
             `<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>\n`
         ]
@@ -75,14 +69,11 @@ figlet('Lazzy Coding XD ', function (err, data) {
                 }else{
                     fs.appendFileSync(`${answers.proName}/index.html`, htmlContent(defultComponent));
                 }
-
-
-
                 fs.mkdir(`${answers.proName}/css`, () => {
                     fs.appendFileSync(`${answers.proName}/css/style.css`, `/*${welcomeMessage}*/`);
                 })
-                fs.mkdirSync(`${answers.proName}/js`, () => {
-                    fs.appendFile(`${answers.proName}/js/custom.js`, `//${welcomeMessage}`)
+                fs.mkdir(`${answers.proName}/js`, () => {
+                    fs.appendFileSync(`${answers.proName}/js/custom.js`, `//${welcomeMessage}`)
                 })
                 fs.mkdirSync(`${answers.proName}/img`);
                 fs.mkdirSync(`${answers.proName}/fonts`);

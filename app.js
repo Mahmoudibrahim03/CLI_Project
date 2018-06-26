@@ -1,5 +1,5 @@
 const figlet = require("figlet");
-const commander = require("commander");
+//const commander = require("commander");
 const inquirer = require("inquirer");
 const fs = require("fs");
 const cmd = require("node-cmd");
@@ -34,7 +34,7 @@ figlet('Lazzy Coding XD ', function (err, data) {
                 fs.mkdir(`${answers.proName}/css`, () => {
                     fs.appendFileSync(`${answers.proName}/css/style.css`, `/*${welcomeMessage}*/`);
                 })
-                fs.mkdirsync(`${answers.proName}/js`, () => {
+                fs.mkdirSync(`${answers.proName}/js`, () => {
                     fs.appendFile(`${answers.proName}/js/custom.js`, `//${welcomeMessage}`)
                 })
                 fs.mkdirSync(`${answers.proName}/img`);
